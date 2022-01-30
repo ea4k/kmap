@@ -71,6 +71,7 @@ void MapWidget::setCenter(const double lat, const double lon)
 
 void MapWidget::addLocator(const double lat1, const double lon1, const double lat2, const double lon2)
 {
+    qDebug() << Q_FUNC_INFO;
     QObject *object = qmlView.rootObject ();
     //MapRectangle
     object->setProperty ("locLat1", lat1);
@@ -96,7 +97,11 @@ void MapWidget::slotButtonClicked ()
     //QGeoRectangle(const QGeoCoordinate &center, double degreesWidth, double degreesHeight)
 
     //item->setData(QVariant::fromValue(QGeoRectangle(QGeoCoordinate(lat, lon), 1, 0.5)), CoordinateRole);
+    QRect *newLoc = new QRect;
+
+    //item->setData(QVariant::fromValue(QGeoCoordinate(locator.getLat(_loc), locator.getLon(_loc))), CoordinateRole);
     modelRectangle.appendRow(item);
+
     //Read:
     //https://stackoverflow.com/questions/51428077/qml-mappolygon-from-c-model
  /*

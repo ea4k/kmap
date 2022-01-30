@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "mapwidget.h"
+#include "locator.h"
 
 
 class MainWindow : public QMainWindow
@@ -15,5 +16,6 @@ public:
 
 private:
     MapWidget *mapWidget;
+    Locator *locator;
 };
 #endif // MAINWINDOW_H

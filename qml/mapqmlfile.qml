@@ -31,7 +31,7 @@ import QtPositioning 5.6
 Rectangle {
     width: 640
     height: 480
-    visible: true
+    visible: truema
     property alias zoom: map.zoomLevel
     property alias lat: map.center.latitude
     property alias lon: map.center.longitude
@@ -88,34 +88,6 @@ Rectangle {
             //    console.log("Mouse GeoPosition (", coordinate.latitude, ", ", coordinate.longitude, ")");
             //}
         }
-/*
-    MapRectangle {
-
-        color: 'green'
-        border.width: 2
-        topLeft {
-            latitude: -27
-            longitude: 153
-        }
-        bottomRight {
-            latitude: -28
-            longitude: 153.5
-        }
-    }
-*/
-
-        /*
-        MapItemView{
-                      model: rectangle_model
-                      delegate: MapRectangle
-                      {
-                           topLeft     : QtPositioning.coordinate(model.coordinate.latitude, model.coordinate.longitude)
-                           bottomRight : QtPositioning.coordinate(model.coordinate.latitude2, model.coordinate.longitude2)
-                           color: 'blue'
-                           border.width: 10
-                      }
-        }
-        */
 
     MapItemView{
                   model: rectangle_model

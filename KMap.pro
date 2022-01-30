@@ -1,7 +1,7 @@
 QT       += core \
-                gui \
-                quickwidgets \
-                positioning
+           gui \
+           quickwidgets \
+           positioning
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,6 +31,7 @@ HEADERS += \
 #    mainwindow.ui
 
 # deploy
+RESOURCES += kmap.qrc
 DISTFILES += Changelog COPYING AUTHORS \
     qml/mapqmlfile.qml
 
