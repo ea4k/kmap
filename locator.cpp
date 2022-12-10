@@ -33,6 +33,16 @@ Locator::Locator(){
 
 Locator::~Locator(){
 }
+/*
+position Locator::getSouthWestLat(const QString& tlocator)
+{
+    position coord;
+    double mLon = -180.0;
+    double mLat = -90.0;
+    return coord;
+
+}
+*/
 
 bool Locator::isValidLocator(const QString& tlocator){
 /* -------------- Subroutine -----------------------
@@ -121,7 +131,6 @@ double Locator::getLat(const QString& tlocator){
     if (tlocator.length() == 4)
     {
         return ((tlocator.at(1)).toLatin1() - 'A') * 10 + ((tlocator.at(3)).toLatin1() - '0' + 0.5) - 90;
-        //return (((tlocator.at(1)).toLatin1() - 65) * 10) + ((tlocator.at(3)).toLatin1() - 48) - 90;
     }
     else if (tlocator.length()== 6)
     {
@@ -150,7 +159,7 @@ double Locator::getLat(const QString& tlocator){
 double Locator::getLon(const QString& tlocator)
 {
       //qDebug() << "Locator::getLon: " << tlocator;
-
+    // It returns just the very west limit of the locator.
     if (!isValidLocator(tlocator))
     {
         return 0.0;
@@ -186,6 +195,41 @@ double Locator::getLon(const QString& tlocator)
     {
         return 0.0;
     }
+}
+
+double Locator::getLatCorner(const QString& tlocator, bool noth)
+{
+    return 0.0;
+}
+
+double Locator::getLonCorner(const QString& tlocator, bool east)
+{
+    //qDebug() << "Locator::getLon: " << tlocator;
+
+  if (!isValidLocator(tlocator))
+  {
+      return 0.0;
+  }
+  if  (tlocator.length() == 2)
+  {
+      return (((tlocator.at(0)).toLatin1() - 65) * 20) - 180;
+  }
+  if (tlocator.length() == 4)
+  {
+      return ((tlocator.at(0)).toLatin1()  - 'A') * 20 + ((tlocator.at(2)).toLatin1()  - '0' + 0.5) * 2 - 180;
+  }
+  else if (tlocator.length()== 6)
+  {
+      return ((tlocator.at(0)).toLatin1()  - 'A') * 20 + ((tlocator.at(2)).toLatin1()  - '0') * 2 + ((tlocator.at(4)).toLatin1()  - 'A' + 0.5) / 12 - 180;
+  }
+  else if (tlocator.length()== 8)
+  {
+      return ((tlocator.at(0)).toLatin1() - 'A') * 20 + ((tlocator.at(2)).toLatin1() - '0') * 2 + ((tlocator.at(4)).toLatin1() - 'A' + 0.0) / 12 + ((tlocator.at(6)).toLatin1() - '0' + 0.5) / 120 - 180;
+  }
+  else
+  {
+      return 0.0;
+  }
 }
 
 int Locator::getBeam(const double lon1, const double lat1, const double lon2, const double lat2){

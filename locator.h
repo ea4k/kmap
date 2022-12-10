@@ -27,6 +27,7 @@
 #ifndef LOCATOR_H
 #define LOCATOR_H
 #include <math.h>
+#include "klogdefinitions.h"
 #include <QString>
 #include <QRegularExpression>
 
@@ -52,11 +53,16 @@ public:
   bool isValidLocator(const QString& tlocator);
   double getLat(const QString& tlocator);
   double getLon(const QString& tlocator);
+  double getLatCorner(const QString& tlocator, bool noth=true);
+  double getLonCorner(const QString& tlocator, bool east=true);
+  //position getSouthWest(const QString& tlocator);
+
   QString getLocator(const double lon1, const double lat1) const;
   int getBeam(const double lon1, const double lat1, const double lon2, const double lat2);
   int getBeamBetweenLocators (const QString& tlocator1, const QString& tlocator2);
   int getDistance(const double lon1, const double lat1, const double lon2, const double lat2, const bool _imperialSystem);
   int getDistanceBetweenLocators (const QString& tlocator1, const QString& tlocator2, const bool _imperialSystem);
+
   //int getDistanceMilles(const double lon1, const double lat1, const double lon2, const double lat2);
   //void degTodms(const double deg);
   //double dmsTodeg (int deg, int min, int sec);
@@ -65,6 +71,7 @@ public:
 
 
 private:
+
   //bool valid;
   //QString myLocator;
   //QString testLocator;
